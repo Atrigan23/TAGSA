@@ -1,0 +1,36 @@
+{
+  "name": "tagsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atrigan23/TAGSA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atrigan23/TAGSA/issues"
+  },
+  "homepage": "https://github.com/Atrigan23/TAGSA#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^6.0.13",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  }
+}
