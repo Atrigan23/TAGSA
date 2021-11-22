@@ -2,6 +2,7 @@ const Photo = require("../models/user");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const axios = require("axios");
+var cloudinary = require("cloudinary").v2;
 
 exports.createPhoto = (req, res, next) => {
   Photo.updateOne(
@@ -47,7 +48,7 @@ exports.getPhotosInfo = (req, res, next) => {
     });
 };
 
-exports.getAllPhotos = async (req, res, next) => {
+exports.getAllPhotos = async  (req, res) => {
   const CLOUD_URL = `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image`;
 
   const auth = {
@@ -55,7 +56,28 @@ exports.getAllPhotos = async (req, res, next) => {
     password: process.env.API_SECRET,
   };
 
-  const response = await axios.get(CLOUD_URL, {auth})
+  const response = await axios.get(CLOUD_URL, {
+    auth,
+    next_cursor: req.query.next_cursor
+  });
+  return res.send(response.data);
+};
+
+exports.searchPhoto = async (req, res, next) => {
+
+  const CLOUD_URL = `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/search`;
+
+  const auth = {
+    username: process.env.API_KEY,
+    password: process.env.API_SECRET,
+  };
+
+  const response =  await axios.get(CLOUD_URL, {
+    auth,
+    params: {
+      expression: req.params.imagename
+    }
+  });
   return res.send(response.data);
 };
 

@@ -44,7 +44,7 @@ exports.getUser =  (req, res, next) => {
     .then((doc) => {
       if (doc) {
         res.status(201).json({
-          content: doc,
+          doc,
           message: "User found",
         });
       } else {

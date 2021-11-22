@@ -10,6 +10,7 @@ const axios = require("axios");
 const userRouter = require("./routes/users");
 const photoRouter = require("./routes/photos");
 const { json } = require("body-parser");
+var cloudinary = require('cloudinary');
 
 const connectDB = async () => {
   await mongoose.connect(
